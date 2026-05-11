@@ -1,4 +1,4 @@
-import { useRef, Suspense, useMemo, useEffect, forwardRef, useImperativeHandle } from 'react';
+import { useRef, Suspense, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, Text, Decal, useTexture, ContactShadows, Sparkles, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
@@ -10,15 +10,9 @@ gsap.registerPlugin(ScrollTrigger);
 // Preload the true GLTF model
 useGLTF.preload('/models/bottle.glb');
 
-const BottleModel = forwardRef((props, ref) => {
+function BottleModel() {
   const group = useRef();
   const scrollRotationRef = useRef();
-
-  useImperativeHandle(ref, () => ({
-    get rotation() {
-      return scrollRotationRef.current ? scrollRotationRef.current.rotation : { y: 0 };
-    }
-  }));
 
   // Robustly load nodes from the verified GLB
   const { nodes } = useGLTF('/models/bottle.glb');
@@ -173,11 +167,30 @@ const BottleModel = forwardRef((props, ref) => {
 
   useFrame((state, delta) => {
     if (group.current) {
-      // Add subtle mouse-follow rotation on top of scroll rotation
       group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, targetRotation.current.x, 3, delta);
-      group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, 0, 3, delta);
+      group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, 0, 3, delta); // Lock tilt
     }
   });
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: ".experience-container",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+        onUpdate: (self) => {
+          if (scrollRotationRef.current) {
+            // Faster rotation during the first phase, then continuous
+            // Progress 0-0.125 is Section 1 -> 2
+            const rotation = self.progress * Math.PI * 8; 
+            scrollRotationRef.current.rotation.y = rotation;
+          }
+        }
+      });
+    });
+    return () => ctx.revert();
+  }, []);
 
   const materialProps = {
     color: "#ff7300", // warmer, brighter orange matching reference
@@ -456,9 +469,9 @@ const BottleModel = forwardRef((props, ref) => {
       </Float>
     </group>
   );
-});
+}
 
-export default forwardRef(function Bottle3D(props, ref) {
+export default function Bottle3D() {
   return (
     <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 8.5], fov: 40 }} className="pointer-events-none" dpr={[1, 2]} shadows performance={{ min: 0.5 }}>
@@ -485,9 +498,9 @@ export default forwardRef(function Bottle3D(props, ref) {
         )}
 
         <Suspense fallback={null}>
-          <BottleModel ref={ref} />
+          <BottleModel />
         </Suspense>
       </Canvas>
     </div>
   );
-});
+}

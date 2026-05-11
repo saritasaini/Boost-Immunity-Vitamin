@@ -11,7 +11,6 @@ if (typeof window !== 'undefined') {
 }
 
 export default function ScrollExperience() {
-  const bottleRef = useRef(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -41,16 +40,10 @@ export default function ScrollExperience() {
 
         // Initial state set via GSAP to avoid Tailwind conflicts
         tl.set(".bottle-main-wrapper", { x: isMobile ? "0vw" : "32vw", y: -80, scale: 1.18 }); 
-        tl.set(".hero-big-text", { y: 0, opacity: 1 });
-        tl.set(".hero-bottom-text", { y: 0, opacity: 1 });
+        tl.set(".hero-big-text", { y: 70, opacity: 1 });
+        tl.set(".hero-bottom-text", { x: 100, y: 60, opacity: 1 });
         tl.set(".buy-button-wrapper", { opacity: 1, scale: isMobile ? 0.7 : 1 });
         tl.set(".slot-machine-container", { opacity: 0, y: 100, scale: 0.9 });
-
-        // --- BOTTLE ROTATION ---
-        // Animate the exposed rotation object of the bottle
-        if (bottleRef.current) {
-          tl.to(bottleRef.current.rotation, { y: Math.PI * 10, ease: "none", duration: 8 }, 0);
-        }
 
         // SECTION 1 to SECTION 2 TRANSITION (0-1)
         // Hero text now SLIDES UP out of the way
@@ -108,7 +101,7 @@ export default function ScrollExperience() {
       <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">
         <div className="w-full h-screen max-w-6xl relative flex items-center justify-center">
           <div className="relative w-[300px] md:w-[350px] h-full flex items-center justify-center">
-            <Bottle3D ref={bottleRef} />
+            <Bottle3D />
 
             {/* BUY Button next to bottle */}
             <div className="buy-button-wrapper absolute right-2 md:right-4 top-[42%] -translate-y-1/2 flex flex-col items-center pointer-events-auto z-50">
@@ -123,7 +116,7 @@ export default function ScrollExperience() {
 
       {/* Premium Hero Section 1 Content */}
       <div className="hero-big-text absolute inset-0 z-40 flex flex-col justify-center px-6 md:px-12 lg:px-20 pointer-events-none">
-        <h1 className="font-display text-[clamp(40px,10vw,130px)] lg:text-[140px] leading-[0.8] font-black text-white uppercase tracking-tighter">
+        <h1 className="font-display text-[clamp(50px,12vw,150px)] lg:text-[165px] leading-[0.8] font-black text-white uppercase tracking-tighter">
           BECAUSE<br />
           BEING SICK<br />
           SUCKS
