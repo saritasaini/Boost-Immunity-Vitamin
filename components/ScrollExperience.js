@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Bottle3D from './Bottle3D';
+import Ingredients from './Ingredients';
 import MarqueeTicker from './MarqueeTicker';
 import Footer from './Footer';
 
@@ -38,18 +39,18 @@ export default function ScrollExperience() {
         });
 
         // Initial state set via GSAP to avoid Tailwind conflicts
-        tl.set(".bottle-main-wrapper", { x: isMobile ? "0vw" : "32vw", y: -20, scale: 1.15 }); 
+        tl.set(".bottle-main-wrapper", { x: isMobile ? "0vw" : "32vw", y: -80, scale: 1.18 }); 
         tl.set(".hero-big-text", { y: 0, opacity: 1 });
         tl.set(".hero-bottom-text", { y: 0, opacity: 1 });
         tl.set(".buy-button-wrapper", { opacity: 1, scale: isMobile ? 0.7 : 1 });
         tl.set(".slot-machine-container", { opacity: 0, y: 100, scale: 0.9 });
 
         // SECTION 1 to SECTION 2 TRANSITION (0-1)
-        // Hero text now STAYS in place while the bottle moves to center
-        tl.to(".bottle-main-wrapper", { x: "0vw", y: 0, duration: 1, ease: "power2.inOut" }, 0.1);
-        // Hero text starts to fade/move much later or more subtly
-        tl.to(".hero-big-text", { opacity: 0, duration: 1, ease: "power2.in" }, 0.8);
-        tl.to(".hero-bottom-text", { opacity: 0, duration: 1, ease: "power2.in" }, 0.8);
+        // Hero text now SLIDES UP out of the way
+        tl.to(".hero-big-text", { y: "-100vh", opacity: 0, duration: 1, ease: "power2.in" }, 0.1);
+        tl.to(".hero-bottom-text", { y: "-100vh", opacity: 0, duration: 1, ease: "power2.in" }, 0.1);
+        // Kept y: -80 to prevent cutting and match Section 1's correct position
+        tl.to(".bottle-main-wrapper", { x: "0vw", y: -80, duration: 1, ease: "power2.inOut" }, 0.1);
         
         // Reveal Section 2 Elements
         tl.to(".slot-machine-container", { opacity: 1, duration: 0.5 }, 0.5);
@@ -58,16 +59,18 @@ export default function ScrollExperience() {
         tl.to(".proactive-right", { opacity: 1, pointerEvents: "auto", duration: 0.8 }, 0.7);
         tl.to(".slot-machine-container", { pointerEvents: "auto", duration: 0 }, 0.7);
 
-        // SECTION 2 SPREAD (1-2)
-        tl.to(".slot-machine-container", { x: isMobile ? "0vw" : "-28vw", y: 0, duration: 1, ease: "power2.inOut" }, 1);
-        tl.to(".bottle-main-wrapper", { x: "0vw", y: 0, duration: 1, ease: "power2.inOut" }, 1);
+        // SECTION 2 STAY (1-2)
+        // Kept y: -80 consistent
+        tl.to(".bottle-main-wrapper", { x: "0vw", y: -80, duration: 1, ease: "power2.inOut" }, 1);
 
-        // SECTION 3: NARRATIVE (2-3)
-        tl.to(".slot-machine-container, .proactive-right", { opacity: 0, y: -100, duration: 0.5 }, 2);
-        tl.fromTo(".narrative-text", { y: "100%", opacity: 0 }, { y: "0%", opacity: 1, duration: 1 }, 2);
+        // SECTION 3: INGREDIENTS "MOM LOVE" (2-3)
+        tl.to(".slot-machine-container, .proactive-right", { opacity: 0, y: -200, duration: 1, ease: "power2.in" }, 2);
+        tl.fromTo(".ingredients-section-content", { y: "100%", opacity: 0 }, { y: "0%", opacity: 1, duration: 1, pointerEvents: "auto" }, 2);
+        // Bottle stays centered and prominent through Section 3
+        tl.to(".bottle-main-wrapper", { x: "0vw", y: -80, scale: 1.18, duration: 1 }, 2);
 
         // Baki sections logic remains same...
-        tl.to(".narrative-text", { opacity: 0, y: "-100%", duration: 1 }, 3);
+        tl.to(".ingredients-section-content", { opacity: 0, y: "-100%", duration: 1 }, 3.5);
         tl.fromTo(".elderberry-content", { opacity: 0 }, { opacity: 1, duration: 1 }, 3);
         tl.to(".elderberry-content", { opacity: 0, duration: 1 }, 4);
         tl.fromTo(".vitamin-c-content", { opacity: 0 }, { opacity: 1, duration: 1 }, 4);
@@ -95,9 +98,8 @@ export default function ScrollExperience() {
       style={{ background: 'var(--bg)' }}
     >
       
-      {/* 3D Bottle Layer - Fixed Center Wrapper */}
       <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">
-        <div className="w-full h-[80vh] max-w-6xl relative flex items-center justify-center">
+        <div className="w-full h-screen max-w-6xl relative flex items-center justify-center">
           <div className="relative w-[300px] md:w-[350px] h-full flex items-center justify-center">
             <Bottle3D />
 
@@ -131,13 +133,13 @@ export default function ScrollExperience() {
       {/* Section 2: Triple Split Content (Left, Center, Right) */}
       
       <div className="slot-machine-container opacity-0 absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
-        {/* Large Circular Ring - Shifted right */}
-        <div className="left-circle-graphic opacity-0 absolute left-[-5%] top-1/2 -translate-y-1/2 w-[90vh] h-[90vh] border-2 border-white/20 rounded-full pointer-events-none hidden md:block">
-           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border-2 border-white/40 rounded-full"></div>
+        {/* Large Circular Ring - Pure White Border */}
+        <div className="left-circle-graphic opacity-0 absolute left-[-10%] top-[30%] -translate-y-1/2 w-[125vh] h-[125vh] border-2 border-white rounded-full pointer-events-none hidden md:block">
+           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border-2 border-white rounded-full"></div>
         </div>
 
-        <div className="stay-sick-text opacity-0 absolute left-[8%] top-[55%] -translate-y-1/2 flex flex-col items-start gap-0 z-10 scale-90 md:scale-100">
-           <div className="text-white font-black text-6xl md:text-8xl uppercase tracking-tighter leading-[0.8]">STAY</div>
+        <div className="stay-sick-text opacity-0 absolute left-[8%] top-[65%] -translate-y-1/2 flex flex-col items-start gap-0 z-10 scale-90 md:scale-100">
+           <div className="text-white font-black text-6xl md:text-8xl uppercase tracking-tighter leading-[0.8] ml-20 md:ml-32">STAY</div>
            <div className="flex items-center gap-4">
               <div className="text-white font-black text-6xl md:text-8xl uppercase tracking-tighter leading-[0.8]">SICK</div>
               <span className="text-4xl md:text-6xl">🤙</span>
@@ -151,7 +153,7 @@ export default function ScrollExperience() {
       </div>
 
       {/* Right Side: Proactive Brand Content */}
-      <div className="proactive-right absolute right-[5%] md:right-[8%] top-1/2 -translate-y-1/2 flex flex-col items-start max-w-sm md:max-w-md lg:max-w-lg z-30 opacity-0 pointer-events-none">
+      <div className="proactive-right absolute right-[3%] md:right-[5%] top-1/2 -translate-y-1/2 flex flex-col items-start max-w-sm md:max-w-md lg:max-w-lg z-30 opacity-0 pointer-events-none">
         <p className="text-white font-black tracking-[0.2em] uppercase text-[10px] md:text-xs mb-6 opacity-80">
           BOOST HELPS YOU GET SICK LESS
         </p>
@@ -166,12 +168,8 @@ export default function ScrollExperience() {
         </button>
       </div>
 
-      {/* Narrative Section 3 */}
-      <div className="narrative-text absolute inset-0 z-30 flex items-center justify-center px-12 md:px-24 opacity-0 pointer-events-none">
-        <p className="text-white font-black text-3xl md:text-5xl lg:text-7xl uppercase leading-[0.9] tracking-tighter italic text-center">
-          "The supplement dedicated to your immune system."
-        </p>
-      </div>
+      {/* Section 3: Ingredients "Mom Love" */}
+      <Ingredients />
 
       {/* Elderberry Section 4 */}
       <div className="elderberry-content absolute inset-0 z-30 flex items-center justify-center opacity-0 pointer-events-none">
