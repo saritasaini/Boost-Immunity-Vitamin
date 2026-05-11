@@ -134,11 +134,11 @@ export default function ScrollExperience() {
       
       <div className="slot-machine-container opacity-0 absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
         {/* Large Circular Ring - Pure White Border */}
-        <div className="left-circle-graphic opacity-0 absolute left-[-10%] top-[30%] -translate-y-1/2 w-[125vh] h-[125vh] border-2 border-white rounded-full pointer-events-none hidden md:block">
+        <div className="left-circle-graphic opacity-0 absolute left-[-10%] top-[30%] -translate-y-1/2 w-[118vh] h-[118vh] border-2 border-white rounded-full pointer-events-none hidden md:block">
            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border-2 border-white rounded-full"></div>
         </div>
 
-        <div className="stay-sick-text opacity-0 absolute left-[8%] top-[65%] -translate-y-1/2 flex flex-col items-start gap-0 z-10 scale-90 md:scale-100">
+        <div className="stay-sick-text opacity-0 absolute left-[5%] top-[60%] -translate-y-1/2 flex flex-col items-start gap-0 z-10 scale-90 md:scale-100">
            <div className="text-white font-black text-6xl md:text-8xl uppercase tracking-tighter leading-[0.8] ml-20 md:ml-32">STAY</div>
            <div className="flex items-center gap-4">
               <div className="text-white font-black text-6xl md:text-8xl uppercase tracking-tighter leading-[0.8]">SICK</div>
@@ -153,14 +153,14 @@ export default function ScrollExperience() {
       </div>
 
       {/* Right Side: Proactive Brand Content */}
-      <div className="proactive-right absolute right-[3%] md:right-[5%] top-1/2 -translate-y-1/2 flex flex-col items-start max-w-sm md:max-w-md lg:max-w-lg z-30 opacity-0 pointer-events-none">
+      <div className="proactive-right absolute right-[4%] md:right-[6%] top-[60%] -translate-y-1/2 flex flex-col items-start max-w-sm md:max-w-md lg:max-w-lg z-30 opacity-0 pointer-events-none">
         <p className="text-white font-black tracking-[0.2em] uppercase text-[10px] md:text-xs mb-6 opacity-80">
           BOOST HELPS YOU GET SICK LESS
         </p>
-        <h2 className="font-display text-[clamp(32px,4vw,65px)] leading-[0.95] text-white font-black uppercase mb-8 tracking-tighter">
+        <h2 className="font-display text-[clamp(28px,3.5vw,55px)] leading-[0.85] text-white font-black uppercase mb-6 tracking-tighter">
           BE PROACTIVE<br />NOT REACTIVE<br />ABOUT YOUR<br />IMMUNITY
         </h2>
-        <p className="text-white/90 text-sm md:text-base leading-relaxed mb-10 font-medium max-w-sm">
+        <p className="text-white/90 text-xs md:text-sm leading-snug mb-8 font-medium max-w-[280px]">
           No one gives a f*ck about their immune system unless they have to...and it took us a pandemic to realize that. BOOST is here to fix that.
         </p>
         <button className="border-2 border-white text-white rounded-full px-16 py-4 font-black text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-orange-500 transition-all cursor-pointer pointer-events-auto">

@@ -25,13 +25,7 @@ export default function Ingredients() {
         </p>
       </div>
 
-      {/* Blueberries - Bottom corner assets (visual filler) */}
-      <div className="absolute bottom-[-5%] right-[-5%] w-[30vw] h-[30vw] opacity-80 pointer-events-none">
-        <img src="/images/elderberries.png" alt="" className="w-full h-full object-contain filter blur-[2px]" />
-      </div>
-      <div className="absolute bottom-[-10%] left-[-5%] w-[40vw] h-[40vw] opacity-40 pointer-events-none blur-xl">
-        <img src="/images/elderberries.png" alt="" className="w-full h-full object-contain" />
-      </div>
+
 
     </div>
   );
