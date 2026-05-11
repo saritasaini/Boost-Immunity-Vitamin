@@ -11,6 +11,7 @@ if (typeof window !== 'undefined') {
 }
 
 export default function ScrollExperience() {
+  const bottleRef = useRef(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -44,6 +45,12 @@ export default function ScrollExperience() {
         tl.set(".hero-bottom-text", { y: 0, opacity: 1 });
         tl.set(".buy-button-wrapper", { opacity: 1, scale: isMobile ? 0.7 : 1 });
         tl.set(".slot-machine-container", { opacity: 0, y: 100, scale: 0.9 });
+
+        // --- BOTTLE ROTATION ---
+        // Animate the exposed rotation object of the bottle
+        if (bottleRef.current) {
+          tl.to(bottleRef.current.rotation, { y: Math.PI * 10, ease: "none", duration: 8 }, 0);
+        }
 
         // SECTION 1 to SECTION 2 TRANSITION (0-1)
         // Hero text now SLIDES UP out of the way
@@ -101,7 +108,7 @@ export default function ScrollExperience() {
       <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">
         <div className="w-full h-screen max-w-6xl relative flex items-center justify-center">
           <div className="relative w-[300px] md:w-[350px] h-full flex items-center justify-center">
-            <Bottle3D />
+            <Bottle3D ref={bottleRef} />
 
             {/* BUY Button next to bottle */}
             <div className="buy-button-wrapper absolute right-2 md:right-4 top-[42%] -translate-y-1/2 flex flex-col items-center pointer-events-auto z-50">
