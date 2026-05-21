@@ -129,12 +129,12 @@ export default function ScrollExperience() {
           .to(".elder-text-block", { opacity: 0, duration: 2 }, "<")
           .to(".orange-text-block", { opacity: 1, duration: 2 }, "<");
 
-        // Phase 3: Oranges put one-by-one, rotating as they appear
+        // Phase 3: Oranges put in parallel stagger, rotating as they appear
         elderOutTl
-          .to(".orange-img-1", { opacity: 0.95, rotation: -5, duration: 0.6 })
-          .to(".orange-img-3", { opacity: 0.95, rotation: 5, duration: 0.6 })
-          .to(".orange-img-2", { opacity: 0.90, rotation: 10, duration: 0.6 })
-          .to(".orange-img-4", { opacity: 0.95, rotation: -10, duration: 0.6 });
+          .to(".orange-img-1", { opacity: 0.95, rotation: -5, duration: 0.8 })
+          .to(".orange-img-3", { opacity: 0.95, rotation: 5, duration: 0.8 }, "<0.15")
+          .to(".orange-img-2", { opacity: 0.90, rotation: 10, duration: 0.8 }, "<0.15")
+          .to(".orange-img-4", { opacity: 0.95, rotation: -10, duration: 0.8 }, "<0.15");
 
       });
 
@@ -236,15 +236,15 @@ export default function ScrollExperience() {
         
         {/* Floating Atmospheric Elderberries */}
         <img src="/images/elderberries.png" alt="Elderberry Cluster 1" className="elder-img-1 absolute top-[-15%] left-[10vw] w-[33vw] md:w-[21vw] aspect-square object-contain pointer-events-none opacity-95 blur-[4px] rotate-[-5deg]" />
-        <img src="/images/elderberries.png" alt="Elderberry Cluster 2" className="elder-img-2 absolute bottom-[-35%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none opacity-90 rotate-[10deg]" />
+        <img src="/images/elderberries.png" alt="Elderberry Cluster 2" className="elder-img-2 absolute bottom-[-18%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none opacity-90 rotate-[10deg]" />
         <img src="/images/elderberries.png" alt="Elderberry Cluster 3" className="elder-img-3 absolute top-[-20%] right-[-2vw] w-[38vw] md:w-[25vw] aspect-square object-contain pointer-events-none opacity-95 rotate-[5deg]" />
-        <img src="/images/elderberries.png" alt="Elderberry Cluster 4" className="elder-img-4 absolute bottom-[-35%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none opacity-95 blur-[5px] rotate-[-10deg]" />
+        <img src="/images/elderberries.png" alt="Elderberry Cluster 4" className="elder-img-4 absolute bottom-[-18%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none opacity-95 blur-[5px] rotate-[-10deg]" />
 
         {/* Floating Atmospheric Oranges (Hidden initially, pre-rotated to rotate in beautifully) */}
         <img src="/images/orange.png" alt="Orange Cluster 1" className="orange-img-1 absolute top-[-15%] left-[10vw] w-[33vw] md:w-[21vw] aspect-square object-contain pointer-events-none blur-[4px]" />
-        <img src="/images/orange.png" alt="Orange Cluster 2" className="orange-img-2 absolute bottom-[-35%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none" />
+        <img src="/images/orange.png" alt="Orange Cluster 2" className="orange-img-2 absolute bottom-[-18%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none" />
         <img src="/images/orange.png" alt="Orange Cluster 3" className="orange-img-3 absolute top-[-20%] right-[-2vw] w-[38vw] md:w-[25vw] aspect-square object-contain pointer-events-none" />
-        <img src="/images/orange.png" alt="Orange Cluster 4" className="orange-img-4 absolute bottom-[-35%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none blur-[5px]" />
+        <img src="/images/orange.png" alt="Orange Cluster 4" className="orange-img-4 absolute bottom-[-18%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none blur-[5px]" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl mx-auto items-center relative z-10">
           
