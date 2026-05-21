@@ -2,24 +2,24 @@ import React from 'react';
 
 export default function Ingredients() {
   return (
-    <div className="ingredients-section-content absolute inset-0 z-30 flex flex-col items-center justify-center opacity-0 pointer-events-none">
-      
+    <div className="ingredients-section-content relative w-full h-screen z-30 flex flex-col items-center justify-center overflow-hidden">
+
       {/* Big Headline - Layered behind bottle */}
-      <div className="flex flex-col items-center justify-center w-full px-6 select-none">
-        <h2 className="text-white font-black text-[clamp(40px,12vw,160px)] leading-[0.75] uppercase tracking-tighter text-center">
+      <div className="flex flex-col items-center justify-center w-full px-2 md:px-4 select-none overflow-hidden">
+        <h2 className="text-white font-black text-[13.5vw] leading-[0.8] uppercase tracking-tighter text-center whitespace-nowrap">
           INGREDIENTS
         </h2>
-        <h2 className="text-white font-black text-[clamp(40px,12vw,160px)] leading-[0.75] uppercase tracking-tighter text-center mt-2">
+        <h2 className="text-white font-black text-[14vw] leading-[0.8] uppercase tracking-tighter text-center whitespace-nowrap mt-0.5 md:mt-1 translate-x-[5vw] md:translate-x-[9vw]">
           YOUR MOM
         </h2>
-        <h2 className="text-white font-black text-[clamp(40px,12vw,160px)] leading-[0.75] uppercase tracking-tighter text-center mt-2">
+        <h2 className="text-white font-black text-[14vw] leading-[0.8] uppercase tracking-tighter text-center whitespace-nowrap mt-0.5 md:mt-1 -translate-x-[8vw] md:-translate-x-[12vw]">
           WILL LOVE
         </h2>
       </div>
 
       {/* Side Text */}
-      <div className="absolute left-[5%] md:left-[8%] top-[40%] -translate-y-1/2 max-w-[150px] md:max-w-[200px]">
-        <p className="text-white font-black text-[10px] md:text-xs leading-tight uppercase opacity-90">
+      <div className="absolute left-[5%] md:left-[8%] top-[50%] -translate-y-1/2 max-w-[180px] md:max-w-[250px]">
+        <p className="text-white font-bold text-[20px] md:text-[26px] leading-tight uppercase opacity-90">
           AND YOU,<br />
           OF COURSE.
         </p>

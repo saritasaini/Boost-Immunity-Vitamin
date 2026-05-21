@@ -101,7 +101,12 @@ function BottleModel() {
     ctx.fillText('† Daily Value not established.', 80, 960);
 
     const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(1, 1);
     texture.anisotropy = 16;
+    texture.needsUpdate = true;
     return texture;
   }, []);
 
@@ -144,53 +149,226 @@ function BottleModel() {
     ctx.fillText('7  23314  56425  8', 700, 840);
 
     const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(1, 1);
     texture.anisotropy = 16;
+    texture.needsUpdate = true;
+    return texture;
+  }, []);
+
+  // FRONT TYPOGRAPHY LABEL
+  const frontTextTexture = useMemo(() => {
+    if (typeof document === 'undefined') return null;
+    const canvas = document.createElement('canvas');
+    canvas.width = 1024;
+    canvas.height = 1024;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, 1024, 1024);
+
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+
+    // boost logo
+    ctx.font = '900 135px Inter, sans-serif';
+    ctx.fillText('boost', 512, 280);
+
+    // IMMUNITY VITAMIN
+    ctx.font = '900 24px Inter, sans-serif';
+    ctx.fillText('IMMUNITY VITAMIN', 512, 335);
+
+    // because being sick sucks
+    ctx.font = '800 22px Inter, sans-serif';
+    ctx.fillText('because being sick sucks', 512, 910);
+
+    // dietary supplement / 60 gummies
+    ctx.font = '600 16px Inter, sans-serif';
+    ctx.fillText('dietary supplement', 512, 955);
+    ctx.fillText('60 gummies', 512, 985);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(1, 1);
+    texture.anisotropy = 16;
+    texture.needsUpdate = true;
+    return texture;
+  }, []);
+
+  // RIGHT SIDE TYPOGRAPHY LABEL
+  const rightTextTexture = useMemo(() => {
+    if (typeof document === 'undefined') return null;
+    const canvas = document.createElement('canvas');
+    canvas.width = 1024;
+    canvas.height = 1024;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, 1024, 1024);
+
+    ctx.fillStyle = 'white';
+
+    // Header paragraph
+    ctx.font = '600 17px Inter, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('boost is the first company exclusively', 200, 160);
+    ctx.fillText('dedicated to your immune system.', 200, 185);
+    ctx.fillText('consider us like hand sanitizer for your', 200, 225);
+    ctx.fillText('health.', 200, 250);
+
+    // "So, what's inside?" section title
+    ctx.font = '900 26px Inter, sans-serif';
+    ctx.fillText("So, what's inside?", 200, 320);
+
+    // Emojis for Vitamin C and Elderberry
+    ctx.font = '36px Inter, sans-serif';
+    ctx.fillText('🍊', 280, 390);
+    ctx.fillText('🍇', 680, 390);
+
+    // Text sub-labels for the ingredients
+    ctx.font = '800 16px Inter, sans-serif';
+    ctx.fillText('Vitamin C', 245, 435);
+    ctx.fillText('Elderberry', 645, 435);
+
+    // Elegant Divider line
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(200, 480);
+    ctx.lineTo(824, 480);
+    ctx.stroke();
+
+    // Directions section
+    ctx.font = '700 18px Inter, sans-serif';
+    ctx.fillText('Directions:', 200, 525);
+    ctx.font = '600 17px Inter, sans-serif';
+    ctx.fillText('Step 1. Take 2 gummies.', 315, 525);
+    ctx.fillText("Step 2. That's it.", 315, 555);
+
+    // Elegant Divider line
+    ctx.beginPath();
+    ctx.moveTo(200, 600);
+    ctx.lineTo(824, 600);
+    ctx.stroke();
+
+    // Contact/Help question section
+    ctx.font = '700 17px Inter, sans-serif';
+    ctx.fillText('Have a question?', 200, 645);
+    ctx.fillText('Text us.', 200, 675);
+    
+    ctx.font = '900 17px Inter, sans-serif';
+    ctx.fillText('(917) 540-8641', 600, 660);
+
+    // Bottom certifications bullet text
+    ctx.font = '900 26px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('(V)  (NON GMO)  (GF)', 512, 770);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(1, 1);
+    texture.anisotropy = 16;
+    texture.needsUpdate = true;
     return texture;
   }, []);
 
   const gummyTexture = useTexture('/images/gummy-2.png');
   const barcodeTexture = useTexture('/images/zinc.png');
+  
+  gummyTexture.colorSpace = THREE.SRGBColorSpace;
+  gummyTexture.wrapS = THREE.RepeatWrapping;
+  gummyTexture.wrapT = THREE.RepeatWrapping;
+  gummyTexture.repeat.set(1, 1);
   gummyTexture.anisotropy = 16;
-  barcodeTexture.anisotropy = 16;
+  gummyTexture.needsUpdate = true;
 
-  const targetRotation = useRef({ x: 0, y: 0 });
+  barcodeTexture.colorSpace = THREE.SRGBColorSpace;
+  barcodeTexture.wrapS = THREE.RepeatWrapping;
+  barcodeTexture.wrapT = THREE.RepeatWrapping;
+  barcodeTexture.repeat.set(1, 1);
+  barcodeTexture.anisotropy = 16;
+  barcodeTexture.needsUpdate = true;
+
+  const bottleGroup = useRef();
+
+  // Lerp state
+  const bottleCurrentX = useRef(0);
+  const bottleTargetX = useRef(0);
+  
+  const targetRotationY = useRef(0);
+  const currentRotationY = useRef(0);
+  const scrollRotationY = useRef(0);
+  const mouseRotationY = useRef(0);
+  
+  const DAMPING = 0.055;
+  const LOCK_SCROLL = 600;
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      targetRotation.current.x = x * Math.PI / 16; // subtle mouse rotation
-      targetRotation.current.y = 0; // No tilt
+    if (typeof window === 'undefined') return;
+
+    if (bottleGroup.current) {
+      bottleGroup.current.position.set(0, 0, 0);
+      bottleGroup.current.rotation.set(0, 0, 0);
+    }
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const isMobile = window.innerWidth <= 768;
+      const CENTER_X = isMobile ? 0 : -25;
+
+      // ── Scroll → continuous Y rotation ──
+      scrollRotationY.current = (scrollY / 1200) * Math.PI * 2;
+      targetRotationY.current = mouseRotationY.current + scrollRotationY.current;
+
+      // ── Scroll → horizontal translate ──
+      const progress = Math.min(scrollY / LOCK_SCROLL, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      bottleTargetX.current = eased * CENTER_X;
     };
+
+    const handleMouseMove = (e) => {
+      const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseRotationY.current = mouseX * (Math.PI / 8); // max ±22.5°
+      targetRotationY.current = mouseRotationY.current + scrollRotationY.current;
+    };
+
+    const handleMouseLeave = () => {
+      mouseRotationY.current = 0;
+      targetRotationY.current = scrollRotationY.current;
+    };
+
+    window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseleave', handleMouseLeave);
+
+    // Initial run
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+    };
   }, []);
 
-  useFrame((state, delta) => {
-    if (group.current) {
-      group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, targetRotation.current.x, 3, delta);
-      group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, 0, 3, delta); // Lock tilt
+  useFrame(() => {
+    // Position lerp
+    bottleCurrentX.current += (bottleTargetX.current - bottleCurrentX.current) * 0.07;
+    const bottleCanvas = document.querySelector('.hero-canvas-container');
+    if (bottleCanvas) {
+      bottleCanvas.style.transform = `translateX(${bottleCurrentX.current}vw)`;
+    }
+
+    // Rotation lerp — Y axis only
+    if (bottleGroup.current) {
+      currentRotationY.current += (targetRotationY.current - currentRotationY.current) * DAMPING;
+      bottleGroup.current.rotation.y = currentRotationY.current;
+      bottleGroup.current.rotation.x = 0;
+      bottleGroup.current.rotation.z = 0;
     }
   });
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: ".experience-container",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-        onUpdate: (self) => {
-          if (scrollRotationRef.current) {
-            // Faster rotation during the first phase, then continuous
-            // Progress 0-0.125 is Section 1 -> 2
-            const rotation = self.progress * Math.PI * 8; 
-            scrollRotationRef.current.rotation.y = rotation;
-          }
-        }
-      });
-    });
-    return () => ctx.revert();
-  }, []);
 
   const materialProps = {
     color: "#ff7300", // warmer, brighter orange matching reference
@@ -204,9 +382,8 @@ function BottleModel() {
   };
 
   return (
-    <group ref={scrollRotationRef}>
-      <Float speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
-        <group ref={group} dispose={null} scale={0.75} position={[0, -0.5, 0]}>
+    <group ref={bottleGroup}>
+      <group ref={group} dispose={null} scale={0.75} position={[0, -0.5, 0]}>
 
           {/* --- CAP --- */}
           {capMesh && (
@@ -228,10 +405,16 @@ function BottleModel() {
               <meshPhysicalMaterial {...materialProps} />
 
               {/* Front Gummy Bear Decal */}
-              <Decal position={[0, -0.22, 1.18]} rotation={[0, 0, 0]} scale={[0.55, 0.48, 0.55]} map={gummyTexture} polygonOffsetFactor={-10} depthTest={true} />
+              <Decal position={[0, -0.20, 1.18]} rotation={[0, 0, 0]} scale={[0.55, 0.48, 0.55]} map={gummyTexture} polygonOffsetFactor={-10} depthTest={true} />
+
+              {/* Front Typography Decal */}
+              <Decal position={[0, 0.05, 1.18]} rotation={[0, 0, 0]} scale={[1.3, 1.3, 1.3]} map={frontTextTexture} polygonOffsetFactor={-10} depthTest={true} />
 
               {/* Left Side Supplement Facts Decal */}
               <Decal position={[-1.15, 0.1, 0.3]} rotation={[0, -Math.PI / 2.1, 0]} scale={[1.1, 1.1, 1.1]} map={factsTexture} polygonOffsetFactor={-10} depthTest={true} />
+
+              {/* Right Side Typography Decal */}
+              <Decal position={[1.15, 0.1, 0.3]} rotation={[0, Math.PI / 2.1, 0]} scale={[1.3, 1.3, 1.3]} map={rightTextTexture} polygonOffsetFactor={-10} depthTest={true} />
 
               {/* Back Side FDA & Barcode Decal */}
               <Decal position={[0, 0.1, -1.18]} rotation={[0, Math.PI, 0]} scale={[1.2, 1.2, 1.2]} map={backLabelTexture} polygonOffsetFactor={-10} depthTest={true} />
@@ -252,221 +435,7 @@ function BottleModel() {
             </mesh>
           )}
 
-        {/* --- TYPOGRAPHY --- */}
-        {/* Front: Logo, Subtitle, and Bottom Text */}
-        <group rotation={[0, 0, 0]}>
-          <Text
-            curveRadius={1.25}
-            position={[0, 0.40, 1.25]}
-            fontSize={0.38}
-            color="#ffffff"
-            anchorX="center"
-            anchorY="middle"
-            letterSpacing={-0.02}
-            fontWeight="900"
-            sdfGlyphSize={128}
-            polygonOffset
-            polygonOffsetFactor={-20}
-            material-toneMapped={false}
-            material-depthTest={false}
-            outlineWidth={0.015}
-            outlineColor="#ffffff"
-            outlineOpacity={0.4}
-          >
-            boost
-          </Text>
-          <Text
-            curveRadius={1.25}
-            position={[0, 0.15, 1.25]}
-            fontSize={0.055}
-            color="#ffffff"
-            anchorX="center"
-            anchorY="middle"
-            letterSpacing={0.18}
-            fontWeight="800"
-            sdfGlyphSize={64}
-            polygonOffset
-            polygonOffsetFactor={-20}
-            material-toneMapped={false}
-          >
-            IMMUNITY VITAMIN
-          </Text>
-          <Text
-            curveRadius={1.25}
-            position={[0, -0.65, 1.25]}
-            fontSize={0.05}
-            color="#ffffff"
-            anchorX="center"
-            anchorY="middle"
-            fontWeight="800"
-            sdfGlyphSize={64}
-            polygonOffset
-            polygonOffsetFactor={-20}
-            material-toneMapped={false}
-          >
-            because being sick sucks
-          </Text>
-          <Text
-            curveRadius={1.25}
-            position={[0, -0.74, 1.25]}
-            fontSize={0.034}
-            color="#ffffff"
-            anchorX="center"
-            anchorY="middle"
-            sdfGlyphSize={64}
-            lineHeight={1.2}
-            polygonOffset
-            polygonOffsetFactor={-20}
-            material-toneMapped={false}
-            textAlign="center"
-          >
-            dietary supplement{"\n"}60 gummies
-          </Text>
-        </group>
-
-        {/* Right Side: Info and Icons */}
-        <group rotation={[0, Math.PI / 2.2, 0]}>
-
-          <group position={[0, 0.45, 0]}>
-            <Text
-              curveRadius={1.25}
-              position={[0, 0, 1.25]}
-              fontSize={0.036}
-              color="#ffffff"
-              anchorX="center"
-              anchorY="top"
-              maxWidth={0.7}
-              textAlign="left"
-              sdfGlyphSize={64}
-              polygonOffset
-              polygonOffsetFactor={-20}
-              material-toneMapped={false}
-            >
-              boost is the first company exclusively{"\n"}dedicated to your immune system.{"\n\n"}consider us like hand sanitizer for your{"\n"}health.
-            </Text>
-          </group>
-
-          <group position={[0, 0.08, 0]}>
-            <Text
-              curveRadius={1.25}
-              position={[0, 0, 1.25]}
-              fontSize={0.052}
-              color="#ffffff"
-              anchorX="center"
-              anchorY="top"
-              fontWeight="900"
-              sdfGlyphSize={64}
-              polygonOffset
-              polygonOffsetFactor={-20}
-              material-toneMapped={false}
-            >
-              So, what's inside?
-            </Text>
-
-            {/* Icons Simulation */}
-            <Text curveRadius={1.25} position={[-0.15, -0.12, 1.25]} fontSize={0.055} color="#ffffff" polygonOffset polygonOffsetFactor={-20} material-toneMapped={false}>🍊</Text>
-            <Text curveRadius={1.25} position={[0.15, -0.12, 1.25]} fontSize={0.055} color="#ffffff" polygonOffset polygonOffsetFactor={-20} material-toneMapped={false}>🍇</Text>
-
-            <Text
-              curveRadius={1.25}
-              position={[0, -0.20, 1.25]}
-              fontSize={0.034}
-              color="#ffffff"
-              anchorX="center"
-              anchorY="top"
-              sdfGlyphSize={64}
-              polygonOffset
-              polygonOffsetFactor={-20}
-              material-toneMapped={false}
-            >
-              Vitamin C          Elderberry
-            </Text>
-
-            <Text
-              curveRadius={1.25}
-              position={[0, -0.30, 1.25]}
-              fontSize={0.03}
-              color="#ffffff"
-              anchorX="center"
-              anchorY="top"
-              polygonOffset
-              polygonOffsetFactor={-20}
-              opacity={0.3}
-              material-toneMapped={false}
-            >
-              ---------------------------------------------------------
-            </Text>
-
-            <Text
-              curveRadius={1.25}
-              position={[0, -0.37, 1.25]}
-              fontSize={0.036}
-              color="#ffffff"
-              anchorX="center"
-              anchorY="top"
-              textAlign="left"
-              sdfGlyphSize={64}
-              polygonOffset
-              polygonOffsetFactor={-20}
-              material-toneMapped={false}
-            >
-              Directions:    Step 1. Take 2 gummies.{"\n"}                     Step 2. That's it.
-            </Text>
-
-            <Text
-              curveRadius={1.25}
-              position={[0, -0.50, 1.25]}
-              fontSize={0.03}
-              color="#ffffff"
-              anchorX="center"
-              anchorY="top"
-              polygonOffset
-              polygonOffsetFactor={-20}
-              opacity={0.3}
-              material-toneMapped={false}
-            >
-              ---------------------------------------------------------
-            </Text>
-
-            <Text
-              curveRadius={1.25}
-              position={[-0.1, -0.60, 1.25]}
-              fontSize={0.036}
-              color="#ffffff"
-              anchorX="center"
-              anchorY="top"
-              textAlign="left"
-              sdfGlyphSize={64}
-              polygonOffset
-              polygonOffsetFactor={-20}
-              material-toneMapped={false}
-            >
-              Have a question?{"\n"}Text us.
-            </Text>
-            <Text curveRadius={1.25} position={[0.18, -0.65, 1.25]} fontSize={0.032} color="#ffffff" polygonOffset polygonOffsetFactor={-20} material-toneMapped={false} fontWeight="700">(917) 540-8641</Text>
-          </group>
-
-          <group position={[0, -0.88, 0]}>
-            <Text
-              curveRadius={1.25}
-              position={[0, 0, 1.25]}
-              fontSize={0.058}
-              color="#ffffff"
-              anchorX="center"
-              anchorY="top"
-              fontWeight="900"
-              sdfGlyphSize={64}
-              polygonOffset
-              polygonOffsetFactor={-20}
-              letterSpacing={0.12}
-              material-toneMapped={false}
-            >
-              (V) (NON GMO) (GF)
-            </Text>
-          </group>
-        </group>
-        </group>
-      </Float>
+      </group>
     </group>
   );
 }
@@ -474,7 +443,18 @@ function BottleModel() {
 export default function Bottle3D() {
   return (
     <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 8.5], fov: 40 }} className="pointer-events-none" dpr={[1, 2]} shadows performance={{ min: 0.5 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 8.5], fov: 40 }} 
+        className="pointer-events-none" 
+        dpr={[1, 2]} 
+        shadows 
+        performance={{ min: 0.5 }}
+        gl={{
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1.0,
+          outputColorSpace: THREE.SRGBColorSpace
+        }}
+      >
         {/* Cinematic Studio Lighting Setup */}
         <ambientLight intensity={0.8} />
 

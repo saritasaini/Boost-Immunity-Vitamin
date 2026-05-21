@@ -20,13 +20,21 @@
   --spacer-m: max(10px, 1.111vw);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--bg);
+  background: var(--bg) !important;
+  background-attachment: fixed !important;
   color: var(--fg);
   font-family: var(--font-primary);
   margin: 0;
   overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
   -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
 }
 
 .brand-gradient {
@@ -83,4 +91,57 @@ body {
 
 .clip-path-circle {
   clip-path: circle(50% at 50% 50%);
+}
+
+/* Custom section stacking for natural scrolling */
+.experience-container {
+  height: 500vh !important;
+  background: transparent !important;
+}
+
+.hero-big-text {
+  position: absolute !important;
+  top: 0vh !important;
+  height: 100vh !important;
+}
+
+.hero-bottom-text {
+  position: absolute !important;
+  top: 75vh !important;
+}
+
+.slot-machine-container {
+  position: absolute !important;
+  top: 130vh !important;
+  height: 100vh !important;
+}
+
+.proactive-right {
+  position: absolute !important;
+  top: 190vh !important;
+}
+
+.ingredients-section-content {
+  position: absolute !important;
+  top: 260vh !important;
+  height: 100vh !important;
+}
+
+.elderberry-content {
+  position: absolute !important;
+  top: 380vh !important;
+  height: 100vh !important;
+}
+
+/* Three.js Canvas translate transition handles */
+.hero-canvas-container {
+  will-change: transform;
+  transition: none;    /* JS handles transition via lerp, not CSS */
+}
+
+@media (min-width: 769px) {
+  .hero-canvas-container {
+    position: relative;
+    left: 25vw;
+  }
 }
