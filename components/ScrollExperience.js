@@ -88,7 +88,7 @@ export default function ScrollExperience() {
         });
 
         // Section 4: Elderberry Enter Fade-in (decoupled from pin spacer)
-        gsap.to(".elderberry-content, .purple-bg-overlay", {
+        gsap.to(".elderberry-content", {
           scrollTrigger: {
             trigger: ".ingredients-section-content",
             start: "bottom 30%",
@@ -117,9 +117,9 @@ export default function ScrollExperience() {
           .to(".elder-img-2", { opacity: 0, rotation: "+=90", duration: 1 })
           .to(".elder-img-4", { opacity: 0, rotation: "-=90", duration: 1 });
 
-        // Phase 2: Dynamic Background & Text Transition (Purple to Orange / Elderberry to Orange)
+        // Phase 2: Dynamic Background & Text Transition (Orange to Purple / Elderberry to Orange text)
         elderOutTl
-          .to(".purple-bg-overlay", { opacity: 0, duration: 2 })
+          .to(".purple-bg-overlay", { opacity: 1, duration: 2 })
           .to(".elder-text-block", { opacity: 0, duration: 2 }, "<")
           .to(".orange-text-block", { opacity: 1, duration: 2 }, "<");
 
@@ -149,7 +149,7 @@ export default function ScrollExperience() {
       {/* Purple background overlay for Elderberry Section 4 */}
       <div 
         className="purple-bg-overlay fixed inset-0 z-10 opacity-0 pointer-events-none transition-opacity duration-500" 
-        style={{ background: 'linear-gradient(315deg, #1b0230 0%, #4c0f75 100%)' }} 
+        style={{ background: 'linear-gradient(287.56deg, #5b1bf4 0%, #1c004a 100%)' }} 
       />
 
       <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">
