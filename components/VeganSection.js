@@ -17,10 +17,10 @@ export default function VeganSection() {
         </div>
       </div>
 
-      {/* Center 3D Bottle - aligned perfectly with the scroll container layout */}
+      {/* Center container for the BUY bubble, aligning perfectly with the first fixed bottle */}
       <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-20">
         <div className="w-[300px] md:w-[350px] h-screen relative flex items-center justify-center">
-          <Bottle3D />
+          {/* We do NOT render a second Bottle3D here to keep the original bottle fixed and prevent canvas lag */}
           {/* BUY Bubble sitting above the bottle cap, exactly as in screenshot */}
           <div className="absolute top-[37%] md:top-[38%] left-[58%] w-10 h-10 md:w-11 md:h-11 rounded-full border border-black bg-white flex items-center justify-center pointer-events-auto cursor-pointer hover:scale-115 active:scale-95 transition-transform shadow-[0_4px_10px_rgba(0,0,0,0.08)] z-30">
             <span className="text-[10px] font-black text-black tracking-wider uppercase">BUY</span>
