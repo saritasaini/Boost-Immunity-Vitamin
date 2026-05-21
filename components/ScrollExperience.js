@@ -172,7 +172,7 @@ export default function ScrollExperience() {
           .to(".zinc-img-2", { opacity: 0, rotation: "+=90", scale: 1.5, duration: 1 })
           .to(".zinc-img-4", { opacity: 0, rotation: "-=90", scale: 1.5, duration: 1 });
 
-        // Phase 6: Transition 3 (Lavender to Off-White cream / Zinc text fades out)
+        // Phase 6: Transition 3 (Lavender to Pure White background / Zinc text fades out)
         elderOutTl
           .to(".white-bg-overlay", { opacity: 1, duration: 2 })
           .to(".zinc-text-block", { opacity: 0, duration: 2 }, "<");
@@ -208,7 +208,7 @@ export default function ScrollExperience() {
       {/* White background overlay for unpin transition to Vegan Section */}
       <div
         className="white-bg-overlay fixed inset-0 z-13 opacity-0 pointer-events-none transition-opacity duration-500"
-        style={{ background: '#FAF8F5' }}
+        style={{ background: '#ffffff' }}
       />
 
       <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">

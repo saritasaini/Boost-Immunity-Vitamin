@@ -3,7 +3,7 @@ import Bottle3D from './Bottle3D';
 export default function VeganSection() {
   return (
     <section className="relative w-full min-h-screen overflow-hidden flex items-center py-20"
-      style={{ background: '#FAF8F5' }}>
+      style={{ background: '#ffffff' }}>
 
       {/* Giant stylish text — solid black, condensed as in screenshot */}
       <div className="w-full px-6 md:px-12 lg:px-20 relative z-10 select-none">
