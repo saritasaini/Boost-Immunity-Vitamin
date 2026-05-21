@@ -40,6 +40,15 @@ export default function ScrollExperience() {
         gsap.set(".orange-img-3", { opacity: 0, rotation: -85 });
         gsap.set(".orange-img-4", { opacity: 0, rotation: 80 });
 
+        // Initial states for zinc images (pre-rotated and hidden to prevent Tailwind conflicts)
+        gsap.set(".zinc-img-1", { opacity: 0, rotation: -95 });
+        gsap.set(".zinc-img-2", { opacity: 0, rotation: -80 });
+        gsap.set(".zinc-img-3", { opacity: 0, rotation: -85 });
+        gsap.set(".zinc-img-4", { opacity: 0, rotation: 80 });
+
+        // Initial state for zinc background overlay
+        gsap.set(".zinc-bg-overlay", { opacity: 0 });
+
 
         // Section 2: Slot Machine
         gsap.to(".slot-machine-container", {
@@ -105,12 +114,12 @@ export default function ScrollExperience() {
           ease: "power2.out"
         });
 
-        // Section 4: Elderberry Out Animation and Orange In (1, 3, 2, 4)
+        // Section 4: Ingredients Multi-Phase pinned storytelling (Elderberry ➔ Orange ➔ Zinc)
         const elderOutTl = gsap.timeline({
           scrollTrigger: {
             trigger: ".elderberry-content",
             start: "top top",
-            end: "+=320%",
+            end: "+=520%",
             pin: true,
             scrub: 1
           }
@@ -129,12 +138,32 @@ export default function ScrollExperience() {
           .to(".elder-text-block", { opacity: 0, duration: 2 }, "<")
           .to(".orange-text-block", { opacity: 1, duration: 2 }, "<");
 
-        // Phase 3: Oranges put in parallel stagger, rotating as they appear
+        // Phase 3A: Oranges put one-by-one, rotating as they appear
         elderOutTl
-          .to(".orange-img-1", { opacity: 0.95, rotation: -5, duration: 0.8 })
-          .to(".orange-img-3", { opacity: 0.95, rotation: 5, duration: 0.8 }, "<0.15")
-          .to(".orange-img-2", { opacity: 0.90, rotation: 10, duration: 0.8 }, "<0.15")
-          .to(".orange-img-4", { opacity: 0.95, rotation: -10, duration: 0.8 }, "<0.15");
+          .to(".orange-img-1", { opacity: 0.95, rotation: -5, duration: 1 })
+          .to(".orange-img-3", { opacity: 0.95, rotation: 5, duration: 1 })
+          .to(".orange-img-2", { opacity: 0.90, rotation: 10, duration: 1 })
+          .to(".orange-img-4", { opacity: 0.95, rotation: -10, duration: 1 });
+
+        // Phase 3B: Oranges remove one-by-one, rotating as they hide
+        elderOutTl
+          .to(".orange-img-1", { opacity: 0, rotation: "+=90", duration: 1 })
+          .to(".orange-img-3", { opacity: 0, rotation: "-=90", duration: 1 })
+          .to(".orange-img-2", { opacity: 0, rotation: "+=90", duration: 1 })
+          .to(".orange-img-4", { opacity: 0, rotation: "-=90", duration: 1 });
+
+        // Phase 4: Transition 2 (Purple to Light Grey/Lilac / Orange to Zinc text)
+        elderOutTl
+          .to(".zinc-bg-overlay", { opacity: 1, duration: 2 })
+          .to(".orange-text-block", { opacity: 0, duration: 2 }, "<")
+          .to(".zinc-text-block", { opacity: 1, duration: 2 }, "<");
+
+        // Phase 5: Zinc crystals put one-by-one, rotating as they appear
+        elderOutTl
+          .to(".zinc-img-1", { opacity: 0.95, rotation: -5, duration: 1 })
+          .to(".zinc-img-3", { opacity: 0.95, rotation: 5, duration: 1 })
+          .to(".zinc-img-2", { opacity: 0.90, rotation: 10, duration: 1 })
+          .to(".zinc-img-4", { opacity: 0.95, rotation: -10, duration: 1 });
 
       });
 
@@ -153,9 +182,15 @@ export default function ScrollExperience() {
     >
 
       {/* Purple background overlay for Elderberry Section 4 */}
-      <div 
-        className="purple-bg-overlay fixed inset-0 z-10 opacity-0 pointer-events-none transition-opacity duration-500" 
-        style={{ background: 'linear-gradient(135deg, #6f00ff 0%, #929dff 100%)' }} 
+      <div
+        className="purple-bg-overlay fixed inset-0 z-10 opacity-0 pointer-events-none transition-opacity duration-500"
+        style={{ background: 'linear-gradient(135deg, #6f00ff 0%, #929dff 100%)' }}
+      />
+
+      {/* Zinc background overlay for Section 4 Zinc Phase */}
+      <div
+        className="zinc-bg-overlay fixed inset-0 z-12 opacity-0 pointer-events-none transition-opacity duration-500"
+        style={{ background: 'linear-gradient(135deg, #d1d8e8 0%, #eceef5 100%)' }}
       />
 
       <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">
@@ -231,23 +266,29 @@ export default function ScrollExperience() {
       {/* Section 3: Ingredients "Mom Love" */}
       <Ingredients />
 
-      {/* Section 4: Ingredients Spotlight (Elderberry & Orange Double Phase) */}
+      {/* Section 4: Ingredients Spotlight (Elderberry & Orange & Zinc Three Phase Story) */}
       <div className="elderberry-content absolute inset-0 z-30 flex items-center justify-between px-6 md:px-16 lg:px-24 pointer-events-none select-none">
-        
+
         {/* Floating Atmospheric Elderberries */}
         <img src="/images/elderberries.png" alt="Elderberry Cluster 1" className="elder-img-1 absolute top-[-15%] left-[10vw] w-[33vw] md:w-[21vw] aspect-square object-contain pointer-events-none opacity-95 blur-[4px] rotate-[-5deg]" />
-        <img src="/images/elderberries.png" alt="Elderberry Cluster 2" className="elder-img-2 absolute bottom-[-18%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none opacity-90 rotate-[10deg]" />
+        <img src="/images/elderberries.png" alt="Elderberry Cluster 2" className="elder-img-2 absolute bottom-[-35%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none opacity-90 rotate-[10deg]" />
         <img src="/images/elderberries.png" alt="Elderberry Cluster 3" className="elder-img-3 absolute top-[-20%] right-[-2vw] w-[38vw] md:w-[25vw] aspect-square object-contain pointer-events-none opacity-95 rotate-[5deg]" />
-        <img src="/images/elderberries.png" alt="Elderberry Cluster 4" className="elder-img-4 absolute bottom-[-18%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none opacity-95 blur-[5px] rotate-[-10deg]" />
+        <img src="/images/elderberries.png" alt="Elderberry Cluster 4" className="elder-img-4 absolute bottom-[-35%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none opacity-95 blur-[5px] rotate-[-10deg]" />
 
         {/* Floating Atmospheric Oranges (Hidden initially, pre-rotated to rotate in beautifully) */}
         <img src="/images/orange.png" alt="Orange Cluster 1" className="orange-img-1 absolute top-[-15%] left-[10vw] w-[33vw] md:w-[21vw] aspect-square object-contain pointer-events-none blur-[4px]" />
-        <img src="/images/orange.png" alt="Orange Cluster 2" className="orange-img-2 absolute bottom-[-18%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none" />
+        <img src="/images/orange.png" alt="Orange Cluster 2" className="orange-img-2 absolute bottom-[-35%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none" />
         <img src="/images/orange.png" alt="Orange Cluster 3" className="orange-img-3 absolute top-[-20%] right-[-2vw] w-[38vw] md:w-[25vw] aspect-square object-contain pointer-events-none" />
-        <img src="/images/orange.png" alt="Orange Cluster 4" className="orange-img-4 absolute bottom-[-18%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none blur-[5px]" />
+        <img src="/images/orange.png" alt="Orange Cluster 4" className="orange-img-4 absolute bottom-[-35%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none blur-[5px]" />
+
+        {/* Floating Atmospheric Zinc Crystals (Hidden initially, pre-rotated to rotate in beautifully) */}
+        <img src="/images/zinc.png" alt="Zinc Cluster 1" className="zinc-img-1 absolute top-[-15%] left-[10vw] w-[33vw] md:w-[21vw] aspect-square object-contain pointer-events-none blur-[4px]" />
+        <img src="/images/zinc.png" alt="Zinc Cluster 2" className="zinc-img-2 absolute bottom-[-35%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none" />
+        <img src="/images/zinc.png" alt="Zinc Cluster 3" className="zinc-img-3 absolute top-[-20%] right-[-2vw] w-[38vw] md:w-[25vw] aspect-square object-contain pointer-events-none" />
+        <img src="/images/zinc.png" alt="Zinc Cluster 4" className="zinc-img-4 absolute bottom-[-35%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none blur-[5px]" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl mx-auto items-center relative z-10">
-          
+
           {/* ELDERBERRY SECTION TEXT BLOCK */}
           <div className="elder-text-block col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full">
             <div className="flex flex-col items-start justify-center text-left w-full">
@@ -256,7 +297,7 @@ export default function ScrollExperience() {
               <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">VITAMIN C</h2>
               <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85]">ZINC</h2>
             </div>
-            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-16 lg:pl-32 translate-x-[6vw] md:translate-x-[10vw]">
+            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-16 lg:pl-32 translate-x-[2vw] md:translate-x-[4vw]">
               <p className="text-white/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-6">BENEFITS</p>
               <div className="flex flex-col w-full text-white font-bold text-base md:text-[17px] tracking-tight">
                 <div className="border-b border-white/20 pb-1.5 mb-1.5 w-full">01. Provides Major Cold and Flu Relief</div>
@@ -276,7 +317,7 @@ export default function ScrollExperience() {
               <h2 className="text-white font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">VITAMIN C</h2>
               <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85]">ZINC</h2>
             </div>
-            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-16 lg:pl-32 translate-x-[6vw] md:translate-x-[10vw]">
+            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-16 lg:pl-32 translate-x-[2vw] md:translate-x-[4vw]">
               <p className="text-white/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-6">BENEFITS</p>
               <div className="flex flex-col w-full text-white font-bold text-base md:text-[17px] tracking-tight">
                 <div className="border-b border-white/20 pb-1.5 mb-1.5 w-full">01. Improves Common Cold Symptoms</div>
@@ -285,6 +326,26 @@ export default function ScrollExperience() {
                 <div className="border-b border-white/20 pb-1.5 mb-1.5 w-full">04. Enhances Brain Function</div>
               </div>
               <p className="text-white/60 text-[10px] md:text-[11px] font-semibold mt-4">BOOST has 100mg of Vitamin C per serving</p>
+            </div>
+          </div>
+
+          {/* ZINC SECTION TEXT BLOCK (Overlay - Light theme exactly as in screenshot) */}
+          <div className="zinc-text-block col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full absolute inset-0 opacity-0 pointer-events-none">
+            <div className="flex flex-col items-start justify-center text-left w-full">
+              <p className="text-black/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-2 md:mb-4">INGREDIENTS</p>
+              <h2 className="text-transparent [-webkit-text-stroke:1.5px_black] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">ELDERBERRY</h2>
+              <h2 className="text-transparent [-webkit-text-stroke:1.5px_black] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">VITAMIN C</h2>
+              <h2 className="text-black font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85]">ZINC</h2>
+            </div>
+            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-16 lg:pl-32 translate-x-[2vw] md:translate-x-[4vw]">
+              <p className="text-black/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-6">BENEFITS</p>
+              <div className="flex flex-col w-full text-black font-bold text-base md:text-[17px] tracking-tight">
+                <div className="border-b border-black/20 pb-1.5 mb-1.5 w-full">01. Acts as a Powerful Antioxidant</div>
+                <div className="border-b border-black/20 pb-1.5 mb-1.5 w-full">02. Helps Balance Hormones</div>
+                <div className="border-b border-black/20 pb-1.5 mb-1.5 w-full">03. Maintains Heart Health</div>
+                <div className="border-b border-black/20 pb-1.5 mb-1.5 w-full">04. Aids in Digestion</div>
+              </div>
+              <p className="text-black/60 text-[10px] md:text-[11px] font-semibold mt-4">BOOST has 10mg of Zinc per serving</p>
             </div>
           </div>
 
