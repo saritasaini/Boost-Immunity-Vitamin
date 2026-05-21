@@ -190,7 +190,7 @@ export default function ScrollExperience() {
       {/* Zinc background overlay for Section 4 Zinc Phase */}
       <div
         className="zinc-bg-overlay fixed inset-0 z-12 opacity-0 pointer-events-none transition-opacity duration-500"
-        style={{ background: 'linear-gradient(135deg, #d1d8e8 0%, #eceef5 100%)' }}
+        style={{ background: 'linear-gradient(150deg, rgba(230, 230, 250, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(202, 202, 237, 1) 97%)' }}
       />
 
       <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">
