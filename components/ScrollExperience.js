@@ -35,16 +35,16 @@ export default function ScrollExperience() {
         gsap.set(".stay-sick-text, .left-circle-graphic, .proactive-right", { opacity: 0 });
 
         // Initial states for orange images (pre-rotated and hidden to prevent Tailwind conflicts)
-        gsap.set(".orange-img-1", { opacity: 0, rotation: -95 });
-        gsap.set(".orange-img-2", { opacity: 0, rotation: -80 });
-        gsap.set(".orange-img-3", { opacity: 0, rotation: -85 });
-        gsap.set(".orange-img-4", { opacity: 0, rotation: 80 });
+        gsap.set(".orange-img-1", { opacity: 0, rotation: -95, scale: 0 });
+        gsap.set(".orange-img-2", { opacity: 0, rotation: -80, scale: 0 });
+        gsap.set(".orange-img-3", { opacity: 0, rotation: -85, scale: 0 });
+        gsap.set(".orange-img-4", { opacity: 0, rotation: 80, scale: 0 });
 
         // Initial states for zinc images (pre-rotated and hidden to prevent Tailwind conflicts)
-        gsap.set(".zinc-img-1", { opacity: 0, rotation: -95 });
-        gsap.set(".zinc-img-2", { opacity: 0, rotation: -80 });
-        gsap.set(".zinc-img-3", { opacity: 0, rotation: -85 });
-        gsap.set(".zinc-img-4", { opacity: 0, rotation: 80 });
+        gsap.set(".zinc-img-1", { opacity: 0, rotation: -95, scale: 0 });
+        gsap.set(".zinc-img-2", { opacity: 0, rotation: -80, scale: 0 });
+        gsap.set(".zinc-img-3", { opacity: 0, rotation: -85, scale: 0 });
+        gsap.set(".zinc-img-4", { opacity: 0, rotation: 80, scale: 0 });
 
         // Initial state for zinc background overlay
         gsap.set(".zinc-bg-overlay", { opacity: 0 });
