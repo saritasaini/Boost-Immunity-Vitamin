@@ -297,7 +297,7 @@ export default function ScrollExperience() {
               <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">VITAMIN C</h2>
               <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85]">ZINC</h2>
             </div>
-            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-16 lg:pl-32 translate-x-[2vw] md:translate-x-[4vw]">
+            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-24 lg:pl-44 translate-x-[3vw] md:translate-x-[6vw]">
               <p className="text-white/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-6">BENEFITS</p>
               <div className="flex flex-col w-full text-white font-bold text-base md:text-[17px] tracking-tight">
                 <div className="border-b border-white/20 pb-1.5 mb-1.5 w-full">01. Provides Major Cold and Flu Relief</div>
@@ -317,7 +317,7 @@ export default function ScrollExperience() {
               <h2 className="text-white font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">VITAMIN C</h2>
               <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85]">ZINC</h2>
             </div>
-            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-16 lg:pl-32 translate-x-[2vw] md:translate-x-[4vw]">
+            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-24 lg:pl-44 translate-x-[3vw] md:translate-x-[6vw]">
               <p className="text-white/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-6">BENEFITS</p>
               <div className="flex flex-col w-full text-white font-bold text-base md:text-[17px] tracking-tight">
                 <div className="border-b border-white/20 pb-1.5 mb-1.5 w-full">01. Improves Common Cold Symptoms</div>
@@ -337,7 +337,7 @@ export default function ScrollExperience() {
               <h2 className="text-transparent [-webkit-text-stroke:1.5px_black] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">VITAMIN C</h2>
               <h2 className="text-black font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85]">ZINC</h2>
             </div>
-            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-16 lg:pl-32 translate-x-[2vw] md:translate-x-[4vw]">
+            <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-24 lg:pl-44 translate-x-[3vw] md:translate-x-[6vw]">
               <p className="text-black/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-6">BENEFITS</p>
               <div className="flex flex-col w-full text-black font-bold text-base md:text-[17px] tracking-tight">
                 <div className="border-b border-black/20 pb-1.5 mb-1.5 w-full">01. Acts as a Powerful Antioxidant</div>
