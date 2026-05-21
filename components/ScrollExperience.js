@@ -46,10 +46,8 @@ export default function ScrollExperience() {
         gsap.set(".zinc-img-3", { opacity: 0, rotation: -85 });
         gsap.set(".zinc-img-4", { opacity: 0, rotation: 80 });
 
-        // Initial state for zinc background overlay and text blocks spatial offset
+        // Initial state for zinc background overlay
         gsap.set(".zinc-bg-overlay", { opacity: 0 });
-        gsap.set(".orange-text-block", { opacity: 0, y: 40, visibility: "hidden" });
-        gsap.set(".zinc-text-block", { opacity: 0, y: 40, visibility: "hidden" });
 
 
         // Section 2: Slot Machine
@@ -134,11 +132,11 @@ export default function ScrollExperience() {
           .to(".elder-img-2", { opacity: 0, rotation: "+=90", duration: 1 })
           .to(".elder-img-4", { opacity: 0, rotation: "-=90", duration: 1 });
 
-        // Phase 2: Dynamic Background & Text Transition (Orange to Purple / Elderberry to Orange text sliding seamlessly)
+        // Phase 2: Dynamic Background & Text Transition (Orange to Purple / Elderberry to Orange text)
         elderOutTl
           .to(".purple-bg-overlay", { opacity: 1, duration: 2 })
-          .to(".elder-text-block", { opacity: 0, y: -40, visibility: "hidden", duration: 2 }, "<")
-          .to(".orange-text-block", { opacity: 1, y: 0, visibility: "visible", duration: 2 }, "<");
+          .to(".elder-text-block", { opacity: 0, duration: 2 }, "<")
+          .to(".orange-text-block", { opacity: 1, duration: 2 }, "<");
 
         // Phase 3A: Oranges put one-by-one, rotating as they appear
         elderOutTl
@@ -154,11 +152,11 @@ export default function ScrollExperience() {
           .to(".orange-img-2", { opacity: 0, rotation: "+=90", duration: 1 })
           .to(".orange-img-4", { opacity: 0, rotation: "-=90", duration: 1 });
 
-        // Phase 4: Transition 2 (Purple to Light Grey/Lilac / Orange to Zinc text sliding seamlessly)
+        // Phase 4: Transition 2 (Purple to Light Grey/Lilac / Orange to Zinc text)
         elderOutTl
           .to(".zinc-bg-overlay", { opacity: 1, duration: 2 })
-          .to(".orange-text-block", { opacity: 0, y: -40, visibility: "hidden", duration: 2 }, "<")
-          .to(".zinc-text-block", { opacity: 1, y: 0, visibility: "visible", duration: 2 }, "<");
+          .to(".orange-text-block", { opacity: 0, duration: 2 }, "<")
+          .to(".zinc-text-block", { opacity: 1, duration: 2 }, "<");
 
         // Phase 5: Zinc crystals put one-by-one, rotating as they appear
         elderOutTl
@@ -295,9 +293,9 @@ export default function ScrollExperience() {
           <div className="elder-text-block col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full">
             <div className="flex flex-col items-start justify-center text-left w-full">
               <p className="text-white/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-2 md:mb-4">INGREDIENTS</p>
-              <h2 className="text-white font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">ELDERBERRY</h2>
-              <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">VITAMIN C</h2>
-              <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85]">ZINC</h2>
+              <h2 className="text-white font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2 whitespace-nowrap">ELDERBERRY</h2>
+              <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2 whitespace-nowrap">VITAMIN C</h2>
+              <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] whitespace-nowrap">ZINC</h2>
             </div>
             <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-24 lg:pl-44 translate-x-[3vw] md:translate-x-[6vw]">
               <p className="text-white/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-6">BENEFITS</p>
@@ -315,9 +313,9 @@ export default function ScrollExperience() {
           <div className="orange-text-block col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full absolute inset-0 opacity-0 pointer-events-none">
             <div className="flex flex-col items-start justify-center text-left w-full">
               <p className="text-white/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-2 md:mb-4">INGREDIENTS</p>
-              <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">ELDERBERRY</h2>
-              <h2 className="text-white font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">VITAMIN C</h2>
-              <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85]">ZINC</h2>
+              <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2 whitespace-nowrap">ELDERBERRY</h2>
+              <h2 className="text-white font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2 whitespace-nowrap">VITAMIN C</h2>
+              <h2 className="text-transparent [-webkit-text-stroke:1.5px_white] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] whitespace-nowrap">ZINC</h2>
             </div>
             <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-24 lg:pl-44 translate-x-[3vw] md:translate-x-[6vw]">
               <p className="text-white/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-6">BENEFITS</p>
@@ -335,9 +333,9 @@ export default function ScrollExperience() {
           <div className="zinc-text-block col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full absolute inset-0 opacity-0 pointer-events-none">
             <div className="flex flex-col items-start justify-center text-left w-full">
               <p className="text-black/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-2 md:mb-4">INGREDIENTS</p>
-              <h2 className="text-transparent [-webkit-text-stroke:1.5px_black] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">ELDERBERRY</h2>
-              <h2 className="text-transparent [-webkit-text-stroke:1.5px_black] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2">VITAMIN C</h2>
-              <h2 className="text-black font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85]">ZINC</h2>
+              <h2 className="text-transparent [-webkit-text-stroke:1.5px_black] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2 whitespace-nowrap">ELDERBERRY</h2>
+              <h2 className="text-transparent [-webkit-text-stroke:1.5px_black] font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] mb-2 whitespace-nowrap">VITAMIN C</h2>
+              <h2 className="text-black font-black text-5xl md:text-6xl lg:text-[75px] uppercase tracking-tighter leading-[0.85] whitespace-nowrap">ZINC</h2>
             </div>
             <div className="flex flex-col items-start justify-center w-full pl-0 md:pl-24 lg:pl-44 translate-x-[3vw] md:translate-x-[6vw]">
               <p className="text-black/60 tracking-[0.25em] uppercase text-[10px] md:text-xs font-black mb-6">BENEFITS</p>
