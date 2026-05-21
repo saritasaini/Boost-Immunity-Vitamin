@@ -46,8 +46,10 @@ export default function ScrollExperience() {
         gsap.set(".zinc-img-3", { opacity: 0, rotation: -85 });
         gsap.set(".zinc-img-4", { opacity: 0, rotation: 80 });
 
-        // Initial state for zinc background overlay
+        // Initial state for zinc background overlay and text blocks spatial offset
         gsap.set(".zinc-bg-overlay", { opacity: 0 });
+        gsap.set(".orange-text-block", { opacity: 0, y: 40, visibility: "hidden" });
+        gsap.set(".zinc-text-block", { opacity: 0, y: 40, visibility: "hidden" });
 
 
         // Section 2: Slot Machine
@@ -119,7 +121,7 @@ export default function ScrollExperience() {
           scrollTrigger: {
             trigger: ".elderberry-content",
             start: "top top",
-            end: "+=520%",
+            end: "+=400%",
             pin: true,
             scrub: 1
           }
@@ -132,11 +134,11 @@ export default function ScrollExperience() {
           .to(".elder-img-2", { opacity: 0, rotation: "+=90", duration: 1 })
           .to(".elder-img-4", { opacity: 0, rotation: "-=90", duration: 1 });
 
-        // Phase 2: Dynamic Background & Text Transition (Orange to Purple / Elderberry to Orange text)
+        // Phase 2: Dynamic Background & Text Transition (Orange to Purple / Elderberry to Orange text sliding seamlessly)
         elderOutTl
           .to(".purple-bg-overlay", { opacity: 1, duration: 2 })
-          .to(".elder-text-block", { opacity: 0, duration: 2 }, "<")
-          .to(".orange-text-block", { opacity: 1, duration: 2 }, "<");
+          .to(".elder-text-block", { opacity: 0, y: -40, visibility: "hidden", duration: 2 }, "<")
+          .to(".orange-text-block", { opacity: 1, y: 0, visibility: "visible", duration: 2 }, "<");
 
         // Phase 3A: Oranges put one-by-one, rotating as they appear
         elderOutTl
@@ -152,11 +154,11 @@ export default function ScrollExperience() {
           .to(".orange-img-2", { opacity: 0, rotation: "+=90", duration: 1 })
           .to(".orange-img-4", { opacity: 0, rotation: "-=90", duration: 1 });
 
-        // Phase 4: Transition 2 (Purple to Light Grey/Lilac / Orange to Zinc text)
+        // Phase 4: Transition 2 (Purple to Light Grey/Lilac / Orange to Zinc text sliding seamlessly)
         elderOutTl
           .to(".zinc-bg-overlay", { opacity: 1, duration: 2 })
-          .to(".orange-text-block", { opacity: 0, duration: 2 }, "<")
-          .to(".zinc-text-block", { opacity: 1, duration: 2 }, "<");
+          .to(".orange-text-block", { opacity: 0, y: -40, visibility: "hidden", duration: 2 }, "<")
+          .to(".zinc-text-block", { opacity: 1, y: 0, visibility: "visible", duration: 2 }, "<");
 
         // Phase 5: Zinc crystals put one-by-one, rotating as they appear
         elderOutTl
