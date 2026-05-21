@@ -2,12 +2,12 @@ import Bottle3D from './Bottle3D';
 
 export default function VeganSection() {
   return (
-    <section className="relative w-full min-h-[120vh] overflow-hidden flex items-center py-32"
-      style={{ background: '#ffffff' }}>
+    <section className="relative w-full min-h-screen overflow-hidden flex items-center py-20"
+      style={{ background: '#FAF8F5' }}>
 
-      {/* Giant stylish text — already loaded, no fading */}
-      <div className="w-full px-4 md:px-8 relative z-10">
-        <div className="font-display text-[clamp(80px,16vw,240px)] leading-[0.92] text-[#1a1a1a] font-black text-left tracking-[0.02em] uppercase"
+      {/* Giant stylish text — solid black, condensed as in screenshot */}
+      <div className="w-full px-6 md:px-12 lg:px-20 relative z-10 select-none">
+        <div className="font-display text-[clamp(65px,14.5vw,210px)] leading-[0.88] text-black font-black text-left tracking-[0.02em] uppercase"
           style={{ fontStretch: 'condensed' }}>
           <div>VEGAN</div>
           <div>NON GMO</div>
@@ -17,17 +17,21 @@ export default function VeganSection() {
         </div>
       </div>
 
-      {/* Bottle - positioned exactly as in ScrollExperience */}
+      {/* Center 3D Bottle - aligned perfectly with the scroll container layout */}
       <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-20">
-        <div className="w-full h-[600px] md:h-[800px]">
+        <div className="w-[300px] md:w-[350px] h-screen relative flex items-center justify-center">
           <Bottle3D />
+          {/* BUY Bubble sitting above the bottle cap, exactly as in screenshot */}
+          <div className="absolute top-[37%] md:top-[38%] left-[58%] w-10 h-10 md:w-11 md:h-11 rounded-full border border-black bg-white flex items-center justify-center pointer-events-auto cursor-pointer hover:scale-115 active:scale-95 transition-transform shadow-[0_4px_10px_rgba(0,0,0,0.08)] z-30">
+            <span className="text-[10px] font-black text-black tracking-wider uppercase">BUY</span>
+          </div>
         </div>
       </div>
 
-      {/* Small description text on the right */}
-      <div className="absolute top-[28%] right-[6%] w-[200px] z-30">
-        <p className="text-sm font-sans text-gray-500 leading-relaxed">
-          A catalyst in promoting a health-conscious lifestyle.
+      {/* Small description text on the right - styled exactly as in screenshot */}
+      <div className="absolute top-[45%] right-[6%] md:right-[10%] w-[150px] md:w-[200px] z-30 select-none">
+        <p className="text-[11px] md:text-[13px] font-sans font-bold text-neutral-800 leading-snug tracking-tight text-left">
+          A catalyst in promoting<br />a health-conscious<br />lifestyle.
         </p>
       </div>
 

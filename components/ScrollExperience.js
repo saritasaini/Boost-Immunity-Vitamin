@@ -46,8 +46,8 @@ export default function ScrollExperience() {
         gsap.set(".zinc-img-3", { opacity: 0, rotation: -85, scale: 0 });
         gsap.set(".zinc-img-4", { opacity: 0, rotation: 80, scale: 0 });
 
-        // Initial state for zinc background overlay
-        gsap.set(".zinc-bg-overlay", { opacity: 0 });
+        // Initial state for zinc background overlay and white overlay
+        gsap.set(".zinc-bg-overlay, .white-bg-overlay", { opacity: 0 });
 
 
         // Section 2: Slot Machine
@@ -119,7 +119,7 @@ export default function ScrollExperience() {
           scrollTrigger: {
             trigger: ".elderberry-content",
             start: "top top",
-            end: "+=600%",
+            end: "+=700%",
             pin: true,
             scrub: 1
           }
@@ -172,6 +172,11 @@ export default function ScrollExperience() {
           .to(".zinc-img-2", { opacity: 0, rotation: "+=90", scale: 1.5, duration: 1 })
           .to(".zinc-img-4", { opacity: 0, rotation: "-=90", scale: 1.5, duration: 1 });
 
+        // Phase 6: Transition 3 (Lavender to Off-White cream / Zinc text fades out)
+        elderOutTl
+          .to(".white-bg-overlay", { opacity: 1, duration: 2 })
+          .to(".zinc-text-block", { opacity: 0, duration: 2 }, "<");
+
       });
 
     }, containerRef);
@@ -198,6 +203,12 @@ export default function ScrollExperience() {
       <div
         className="zinc-bg-overlay fixed inset-0 z-12 opacity-0 pointer-events-none transition-opacity duration-500"
         style={{ background: 'linear-gradient(150deg, rgba(230, 230, 250, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(175, 175, 240, 1) 97%)' }}
+      />
+
+      {/* White background overlay for unpin transition to Vegan Section */}
+      <div
+        className="white-bg-overlay fixed inset-0 z-13 opacity-0 pointer-events-none transition-opacity duration-500"
+        style={{ background: '#FAF8F5' }}
       />
 
       <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">

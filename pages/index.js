@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import ScrollExperience from '../components/ScrollExperience';
+import VeganSection from '../components/VeganSection';
 import Footer from '../components/Footer';
 import LoadingScreen from '../components/LoadingScreen';
 
@@ -27,6 +28,7 @@ export default function Home() {
       <Navbar />
       <main>
         <ScrollExperience />
+        <VeganSection />
       </main>
     </>
   );
