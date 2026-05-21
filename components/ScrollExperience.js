@@ -149,7 +149,7 @@ export default function ScrollExperience() {
       {/* Purple background overlay for Elderberry Section 4 */}
       <div 
         className="purple-bg-overlay fixed inset-0 z-10 opacity-0 pointer-events-none transition-opacity duration-500" 
-        style={{ background: 'linear-gradient(287.56deg, #5b1bf4 0%, #1c004a 100%)' }} 
+        style={{ background: 'linear-gradient(135deg, #6f00ff 0%, #929dff 100%)' }} 
       />
 
       <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">
