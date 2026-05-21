@@ -125,12 +125,12 @@ export default function ScrollExperience() {
           }
         });
 
-        // Phase 1: Elderberries remove one-by-one, rotating as they hide
+        // Phase 1: Elderberries remove one-by-one, rotating and scaling up as they hide
         elderOutTl
-          .to(".elder-img-1", { opacity: 0, rotation: "+=90", duration: 1 })
-          .to(".elder-img-3", { opacity: 0, rotation: "-=90", duration: 1 })
-          .to(".elder-img-2", { opacity: 0, rotation: "+=90", duration: 1 })
-          .to(".elder-img-4", { opacity: 0, rotation: "-=90", duration: 1 });
+          .to(".elder-img-1", { opacity: 0, rotation: "+=90", scale: 1.5, duration: 1 })
+          .to(".elder-img-3", { opacity: 0, rotation: "-=90", scale: 1.5, duration: 1 })
+          .to(".elder-img-2", { opacity: 0, rotation: "+=90", scale: 1.5, duration: 1 })
+          .to(".elder-img-4", { opacity: 0, rotation: "-=90", scale: 1.5, duration: 1 });
 
         // Phase 2: Dynamic Background & Text Transition (Orange to Purple / Elderberry to Orange text)
         elderOutTl
@@ -140,17 +140,17 @@ export default function ScrollExperience() {
 
         // Phase 3A: Oranges put one-by-one, rotating as they appear
         elderOutTl
-          .to(".orange-img-1", { opacity: 0.95, rotation: -5, duration: 1 })
-          .to(".orange-img-3", { opacity: 0.95, rotation: 5, duration: 1 })
-          .to(".orange-img-2", { opacity: 0.90, rotation: 10, duration: 1 })
-          .to(".orange-img-4", { opacity: 0.95, rotation: -10, duration: 1 });
+          .to(".orange-img-1", { opacity: 0.95, rotation: -5, scale: 1, duration: 1 })
+          .to(".orange-img-3", { opacity: 0.95, rotation: 5, scale: 1, duration: 1 })
+          .to(".orange-img-2", { opacity: 0.90, rotation: 10, scale: 1, duration: 1 })
+          .to(".orange-img-4", { opacity: 0.95, rotation: -10, scale: 1, duration: 1 });
 
-        // Phase 3B: Oranges remove one-by-one, rotating as they hide
+        // Phase 3B: Oranges remove one-by-one, rotating and scaling up as they hide
         elderOutTl
-          .to(".orange-img-1", { opacity: 0, rotation: "+=90", duration: 1 })
-          .to(".orange-img-3", { opacity: 0, rotation: "-=90", duration: 1 })
-          .to(".orange-img-2", { opacity: 0, rotation: "+=90", duration: 1 })
-          .to(".orange-img-4", { opacity: 0, rotation: "-=90", duration: 1 });
+          .to(".orange-img-1", { opacity: 0, rotation: "+=90", scale: 1.5, duration: 1 })
+          .to(".orange-img-3", { opacity: 0, rotation: "-=90", scale: 1.5, duration: 1 })
+          .to(".orange-img-2", { opacity: 0, rotation: "+=90", scale: 1.5, duration: 1 })
+          .to(".orange-img-4", { opacity: 0, rotation: "-=90", scale: 1.5, duration: 1 });
 
         // Phase 4: Transition 2 (Purple to Light Grey/Lilac / Orange to Zinc text)
         elderOutTl
@@ -160,17 +160,17 @@ export default function ScrollExperience() {
 
         // Phase 5A: Zinc crystals put one-by-one, rotating as they appear
         elderOutTl
-          .to(".zinc-img-1", { opacity: 0.95, rotation: -5, duration: 1 })
-          .to(".zinc-img-3", { opacity: 0.95, rotation: 5, duration: 1 })
-          .to(".zinc-img-2", { opacity: 0.90, rotation: 10, duration: 1 })
-          .to(".zinc-img-4", { opacity: 0.95, rotation: -10, duration: 1 });
+          .to(".zinc-img-1", { opacity: 0.95, rotation: -5, scale: 1, duration: 1 })
+          .to(".zinc-img-3", { opacity: 0.95, rotation: 5, scale: 1, duration: 1 })
+          .to(".zinc-img-2", { opacity: 0.90, rotation: 10, scale: 1, duration: 1 })
+          .to(".zinc-img-4", { opacity: 0.95, rotation: -10, scale: 1, duration: 1 });
 
-        // Phase 5B: Zinc crystals remove one-by-one, rotating as they hide
+        // Phase 5B: Zinc crystals remove one-by-one, rotating and scaling up as they hide
         elderOutTl
-          .to(".zinc-img-1", { opacity: 0, rotation: "+=90", duration: 1 })
-          .to(".zinc-img-3", { opacity: 0, rotation: "-=90", duration: 1 })
-          .to(".zinc-img-2", { opacity: 0, rotation: "+=90", duration: 1 })
-          .to(".zinc-img-4", { opacity: 0, rotation: "-=90", duration: 1 });
+          .to(".zinc-img-1", { opacity: 0, rotation: "+=90", scale: 1.5, duration: 1 })
+          .to(".zinc-img-3", { opacity: 0, rotation: "-=90", scale: 1.5, duration: 1 })
+          .to(".zinc-img-2", { opacity: 0, rotation: "+=90", scale: 1.5, duration: 1 })
+          .to(".zinc-img-4", { opacity: 0, rotation: "-=90", scale: 1.5, duration: 1 });
 
       });
 
