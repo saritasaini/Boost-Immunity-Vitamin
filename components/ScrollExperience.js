@@ -282,10 +282,10 @@ export default function ScrollExperience() {
         <img src="/images/orange.png" alt="Orange Cluster 4" className="orange-img-4 absolute bottom-[-35%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none blur-[5px]" />
 
         {/* Floating Atmospheric Zinc Crystals (Hidden initially, pre-rotated to rotate in beautifully) */}
-        <img src="/images/zinc.png" alt="Zinc Cluster 1" className="zinc-img-1 absolute top-[-15%] left-[10vw] w-[33vw] md:w-[21vw] aspect-square object-contain pointer-events-none blur-[4px]" />
-        <img src="/images/zinc.png" alt="Zinc Cluster 2" className="zinc-img-2 absolute bottom-[-35%] left-[6vw] w-[42vw] md:w-[28vw] aspect-square object-contain pointer-events-none" />
-        <img src="/images/zinc.png" alt="Zinc Cluster 3" className="zinc-img-3 absolute top-[-20%] right-[-2vw] w-[38vw] md:w-[25vw] aspect-square object-contain pointer-events-none" />
-        <img src="/images/zinc.png" alt="Zinc Cluster 4" className="zinc-img-4 absolute bottom-[-35%] right-[-2vw] w-[40vw] md:w-[26vw] aspect-square object-contain pointer-events-none blur-[5px]" />
+        <img src="/images/zinc.png" alt="Zinc Cluster 1" className="zinc-img-1 absolute top-[-15%] left-[10vw] w-[38vw] md:w-[25vw] aspect-square object-contain pointer-events-none blur-[4px]" />
+        <img src="/images/zinc.png" alt="Zinc Cluster 2" className="zinc-img-2 absolute bottom-[-35%] left-[6vw] w-[48vw] md:w-[33vw] aspect-square object-contain pointer-events-none" />
+        <img src="/images/zinc.png" alt="Zinc Cluster 3" className="zinc-img-3 absolute top-[-20%] right-[-2vw] w-[44vw] md:w-[30vw] aspect-square object-contain pointer-events-none" />
+        <img src="/images/zinc.png" alt="Zinc Cluster 4" className="zinc-img-4 absolute bottom-[-35%] right-[-2vw] w-[46vw] md:w-[31vw] aspect-square object-contain pointer-events-none blur-[5px]" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl mx-auto items-center relative z-10">
 
