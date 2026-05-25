@@ -3,13 +3,13 @@ import Bottle3D from './Bottle3D';
 export default function VeganSection() {
   return (
     <section className="relative w-full min-h-screen overflow-hidden flex items-center py-20"
-      style={{ background: '#ffffff' }}>
+      style={{ background: '#fffcf4' }}>
 
       {/* Giant stylish text — solid black, condensed as in screenshot */}
-      <div className="w-full px-6 md:px-12 lg:px-20 relative z-10 select-none">
-        <div className="font-display text-[clamp(65px,14.5vw,210px)] leading-[0.88] text-black font-black text-left tracking-[0.02em] uppercase"
+      <div className="w-full px-6 md:px-12 lg:px-20 relative z-20">
+        <div className="font-display whitespace-nowrap text-[clamp(65px,14.5vw,160px)] leading-[0.88] text-black font-black text-left tracking-[0.02em] uppercase"
           style={{ fontStretch: 'condensed' }}>
-          <div>VEGAN</div>
+          <div>&nbsp;&nbsp;&nbsp;VEGAN</div>
           <div>NON GMO</div>
           <div>NUT FREE</div>
           <div>GLUTEN FREE</div>
@@ -18,7 +18,7 @@ export default function VeganSection() {
       </div>
 
       {/* Center container for the BUY bubble, aligning perfectly with the first fixed bottle */}
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-20">
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-30">
         <div className="w-[300px] md:w-[350px] h-screen relative flex items-center justify-center">
           {/* We do NOT render a second Bottle3D here to keep the original bottle fixed and prevent canvas lag */}
           {/* BUY Bubble sitting above the bottle cap, exactly as in screenshot */}

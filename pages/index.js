@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import ScrollExperience from '../components/ScrollExperience';
 import VeganSection from '../components/VeganSection';
+import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
 import LoadingScreen from '../components/LoadingScreen';
 
@@ -29,6 +30,7 @@ export default function Home() {
       <main>
         <ScrollExperience />
         <VeganSection />
+        <Testimonials />
       </main>
     </>
   );

@@ -119,7 +119,7 @@ export default function ScrollExperience() {
           scrollTrigger: {
             trigger: ".elderberry-content",
             start: "top top",
-            end: "+=700%",
+            end: "+=680%",
             pin: true,
             scrub: 1
           }
@@ -172,10 +172,9 @@ export default function ScrollExperience() {
           .to(".zinc-img-2", { opacity: 0, rotation: "+=90", scale: 1.5, duration: 1 })
           .to(".zinc-img-4", { opacity: 0, rotation: "-=90", scale: 1.5, duration: 1 });
 
-        // Phase 6: Transition 3 (Lavender to Pure White background / Zinc text fades out)
+        // Phase 6: Transition 3 (Lavender to Off-White / Zinc text remains fully visible!)
         elderOutTl
-          .to(".white-bg-overlay", { opacity: 1, duration: 2 })
-          .to(".zinc-text-block", { opacity: 0, duration: 2 }, "<");
+          .to(".white-bg-overlay", { opacity: 1, duration: 2 });
 
       });
 
@@ -208,10 +207,10 @@ export default function ScrollExperience() {
       {/* White background overlay for unpin transition to Vegan Section */}
       <div
         className="white-bg-overlay fixed inset-0 z-13 opacity-0 pointer-events-none transition-opacity duration-500"
-        style={{ background: '#ffffff' }}
+        style={{ background: '#FAF8F5' }}
       />
 
-      <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-40 flex items-center justify-center">
+      <div className="bottle-main-wrapper fixed inset-0 pointer-events-none z-[100] flex items-center justify-center">
         <div className="w-full h-screen max-w-6xl relative flex items-center justify-center">
           <div className="hero-canvas-container relative w-[300px] md:w-[350px] h-full flex items-center justify-center">
             <Bottle3D />
@@ -228,7 +227,7 @@ export default function ScrollExperience() {
       </div>
 
       {/* Premium Hero Section 1 Content */}
-      <div className="hero-big-text absolute inset-0 z-40 flex flex-col justify-center pl-4 md:pl-8 lg:pl-12 pr-6 md:pr-12 lg:pr-20 pointer-events-none">
+      <div className="hero-big-text absolute inset-0 z-20 flex flex-col justify-center pl-4 md:pl-8 lg:pl-12 pr-6 md:pr-12 lg:pr-20 pointer-events-none">
         <h1 className="font-display text-[clamp(50px,12vw,150px)] lg:text-[165px] leading-[0.8] font-black text-white uppercase tracking-tighter">
           BECAUSE<br />
           BEING SICK<br />
@@ -366,6 +365,7 @@ export default function ScrollExperience() {
               <p className="text-black/60 text-[10px] md:text-[11px] font-semibold mt-4">BOOST has 10mg of Zinc per serving</p>
             </div>
           </div>
+
 
         </div>
       </div>
